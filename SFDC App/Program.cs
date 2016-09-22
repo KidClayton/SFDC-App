@@ -20,7 +20,7 @@ namespace SFDC_Connect_Demo
         private static readonly string IsSandBox = ConfigurationManager.AppSettings["Salesforce:IsSandBoxUser"];
         private static readonly string CaseRT = ConfigurationManager.AppSettings["Salesforce:CaseProvisioningRT"];
 
-        static void Main(string[] args)
+        static void Main()
         {
             try
             {
@@ -44,7 +44,6 @@ namespace SFDC_Connect_Demo
                 : "https://login.salesforce.com/services/oauth2/token";
 
             await auth.UsernamePasswordAsync(ConsumerKey, ConsumerSecret, UN, PW, url);
-            //await auth.WebServerAsync(UsernamePasswordAsync(ConsumerKey, ConsumerSecret, UN, PW, url);
             Console.WriteLine("Connected to SFDC");
 
             var client = new ForceClient(auth.InstanceUrl, auth.AccessToken, auth.ApiVersion);
